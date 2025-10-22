@@ -18,34 +18,33 @@ export default function Groups() {
   );
 
   return (
-    <div className="flex-1 overflow-auto bg-white">
-      <div className="p-6">
-        <div className="mb-6 flex items-center justify-between">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900">Group Bookings</h1>
-            <p className="text-gray-600 mt-1">Manage block bookings for events</p>
-          </div>
-          <button className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center gap-2">
-            <Plus className="w-5 h-5" />
-            New Group
-          </button>
-        </div>
+    <div className="flex-1 flex flex-col h-screen overflow-y-auto bg-gray-50 p-4 sm:p-6">
+      <div className="mb-6 flex items-center justify-between">
+        <header>
+          <h1 className="text-3xl font-bold tracking-tight" style={{ color: '#1A202C' }}>Group Bookings</h1>
+          <p className="text-base text-gray-500 mt-1">Manage block bookings for events</p>
+        </header>
+        <button className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-colors flex items-center gap-2">
+          <Plus className="w-5 h-5" />
+          New Group
+        </button>
+      </div>
 
-        <div className="mb-6 flex items-center gap-4">
-          <div className="flex-1 relative">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
-            <input
-              type="text"
-              placeholder="Search by group name or contact person..."
-              value={searchTerm}
-              onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-          <div className="bg-gray-50 px-4 py-2 rounded-lg border border-gray-200">
-            <span className="text-gray-900 font-semibold">{filteredGroups.length} Groups</span>
-          </div>
+      <div className="mb-6 flex items-center gap-4">
+        <div className="flex-1 relative">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <input
+            type="text"
+            placeholder="Search by group name or contact person..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500"
+          />
         </div>
+        <div className="bg-white px-4 py-3 rounded-xl border border-gray-200">
+          <span className="text-gray-900 font-semibold">{filteredGroups.length} Groups</span>
+        </div>
+      </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {filteredGroups.length === 0 ? (
@@ -128,7 +127,6 @@ export default function Groups() {
             })
           )}
         </div>
-      </div>
 
       {selectedGroup && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
